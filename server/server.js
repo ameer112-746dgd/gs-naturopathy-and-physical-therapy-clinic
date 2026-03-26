@@ -8,15 +8,15 @@ const app = express();
 // 1. Connect Database
 connectDB();
 
-// 2. Updated Middleware (Specific CORS)
-// This tells the server to allow requests from your Render frontend
+// 2. Updated Middleware (Very Important)
+// This tells the server to accept requests from ANYWHERE
 app.use(cors({
-    origin: 'https://gs-clinic-frontend.onrender.com', 
+    origin: '*', 
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+    allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
-// Increase limits for large Base64 images
+// Increase limits for large product images
 app.use(express.json({ limit: '50mb' })); 
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 

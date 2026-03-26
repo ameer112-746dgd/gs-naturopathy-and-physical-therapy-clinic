@@ -7,10 +7,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import './Admin.css';
 
-// CENTRALIZED API URL - CHANGE ONLY THIS IF THE BACKEND URL CHANGES
-const BASE_URL = 'https://gs-naturopathy-and-physical-therapy.onrender.com/api/products';
-
 const Admin = () => {
+    // CENTRALIZED URL TO AVOID ERRORS
+    const BASE_URL = 'https://gs-naturopathy-and-physical-therapy.onrender.com/api/products';
+
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loginPass, setLoginPass] = useState('');
     const [products, setProducts] = useState([]);
@@ -30,7 +30,7 @@ const Admin = () => {
         try {
             const res = await axios.get(BASE_URL);
             setProducts(res.data);
-        } catch (err) { console.error("Server Error fetching products"); }
+        } catch (err) { console.error("Fetch Error:", err); }
     };
 
     const handleLogin = (e) => {
@@ -75,16 +75,7 @@ const Admin = () => {
                 await axios.post(`${BASE_URL}/bulk-delete`, { ids: selectedIds });
                 setSelectedIds([]);
                 fetchProducts();
-            } catch (err) { alert("Bulk delete failed"); }
-        }
-    };
-
-    const deleteSingle = async (id) => {
-        if (window.confirm("Delete this product?")) {
-            try {
-                await axios.delete(`${BASE_URL}/${id}`);
-                fetchProducts();
-            } catch (err) { alert("Delete failed"); }
+            } catch (err) { alert("Bulk delete failed."); }
         }
     };
 
@@ -131,7 +122,7 @@ const Admin = () => {
                     </select>
                     <label className="stock-toggle">
                         <input type="checkbox" checked={formData.inStock} onChange={e => setFormData({...formData, inStock: e.target.checked})} />
-                        In Store (Available)
+                        Available In Stock
                     </label>
                 </div>
 
@@ -146,8 +137,8 @@ const Admin = () => {
                 </div>
 
                 <div className="form-actions">
-                    <button type="submit" className="save-btn"><FontAwesomeIcon icon={faSave} /> Save Product</button>
-                    {editingId && <button type="button" className="cancel-btn" onClick={() => {setEditingId(null); setFormData({name:'', price:'', description:'', image:'', category:'Medications / Health Products', inStock: true})}}>Cancel</button>}
+                    <button type="submit" className="save-btn"><FontAwesomeIcon icon={faSave} /> Save</button>
+                    {editingId && <button type="button" className="cancel-btn" onClick={() => setEditingId(null)}>Cancel</button>}
                 </div>
             </form>
 
@@ -169,7 +160,7 @@ const Admin = () => {
                             <th>Name</th>
                             <th>Category</th>
                             <th>Price</th>
-                            <th>Status</th>
+                            <th>Stock</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -183,18 +174,10 @@ const Admin = () => {
                                 <td data-label="Name"><strong>{p.name}</strong></td>
                                 <td data-label="Category"><span className="cat-badge">{p.category}</span></td>
                                 <td data-label="Price">₦{Number(p.price).toLocaleString()}</td>
-                                <td data-label="Status">
-                                    {p.inStock ? 
-                                        <FontAwesomeIcon icon={faCheckCircle} color="green" title="In Store" /> : 
-                                        <FontAwesomeIcon icon={faTimesCircle} color="red" title="Out of Stock" />
-                                    }
-                                </td>
+                                <td data-label="Stock">{p.inStock ? <FontAwesomeIcon icon={faCheckCircle} color="green" /> : <FontAwesomeIcon icon={faTimesCircle} color="red" />}</td>
                                 <td data-label="Actions">
                                     <button className="edit-ico-btn" onClick={() => {setEditingId(p._id); setFormData(p); window.scrollTo(0,0);}}>
                                         <FontAwesomeIcon icon={faEdit} />
-                                    </button>
-                                    <button className="del-ico-btn" style={{marginLeft: '5px'}} onClick={() => deleteSingle(p._id)}>
-                                        <FontAwesomeIcon icon={faTrash} />
                                     </button>
                                 </td>
                             </tr>

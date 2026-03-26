@@ -8,10 +8,9 @@ import {
 import { generateWhatsAppLink } from '../utils/whatsapp';
 import './Products.css';
 
-// CENTRALIZED API URL
-const BASE_URL = 'https://gs-naturopathy-and-physical-therapy.onrender.com/api/products';
-
 const Products = () => {
+    const API_URL = 'https://gs-naturopathy-and-physical-therapy.onrender.com/api/products';
+
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -21,7 +20,7 @@ const Products = () => {
     const [sortOrder, setSortOrder] = useState('none'); 
 
     useEffect(() => {
-        axios.get(BASE_URL)
+        axios.get(API_URL)
             .then(res => {
                 setProducts(res.data);
                 setFilteredProducts(res.data);
@@ -75,7 +74,11 @@ const Products = () => {
                 <div className="products-filter-bar">
                     <div className="search-box">
                         <Search size={18} />
-                        <input type="text" placeholder="Search name..." onChange={(e) => setSearchTerm(e.target.value)} />
+                        <input 
+                            type="text" 
+                            placeholder="Search equipment or drugs..." 
+                            onChange={(e) => setSearchTerm(e.target.value)} 
+                        />
                     </div>
                     <div className="filter-controls">
                         <div className="control-item">
@@ -106,7 +109,10 @@ const Products = () => {
                                 <div className="p-image-area">
                                     {!product.inStock && <div className="stock-badge">Sold Out</div>}
                                     <div className="p-category-tag">{product.category}</div>
-                                    <img src={product.image || 'https://via.placeholder.com/300x200?text=Clinic+Product'} alt={product.name} />
+                                    <img 
+                                        src={product.image || 'https://via.placeholder.com/300x200?text=Clinic+Product'} 
+                                        alt={product.name} 
+                                    />
                                 </div>
                                 <div className="p-details">
                                     <h3>{product.name}</h3>
@@ -132,52 +138,6 @@ const Products = () => {
                                 <p>Try adjusting your search or category filter.</p>
                             </div>
                         )}
-                    </div>
-                </section>
-
-                {/* Banner sections... (same as before) */}
-                <section className="order-timeline-section">
-                    <h2 className="section-title">Ordering Process</h2>
-                    <div className="timeline-grid">
-                        <div className="timeline-item">
-                            <div className="t-icon"><Package /></div>
-                            <h4>Select Item</h4>
-                            <p>Pick the best machine or drug for your needs.</p>
-                        </div>
-                        <div className="timeline-item">
-                            <div className="t-icon"><MessageSquare /></div>
-                            <h4>WhatsApp Order</h4>
-                            <p>Chat with us to finalize payment and delivery.</p>
-                        </div>
-                        <div className="timeline-item">
-                            <div className="t-icon"><Truck /></div>
-                            <h4>Swift Delivery</h4>
-                            <p>Get your item delivered to your door.</p>
-                        </div>
-                    </div>
-                </section>
-
-                <div className="delivery-card-modern">
-                    <div className="d-info">
-                        <Truck size={40} className="d-icon-gold" />
-                        <div>
-                            <h3>Lagos & Nationwide Shipping</h3>
-                            <p>We provide safe doorstep delivery for all equipment and natural drugs.</p>
-                        </div>
-                    </div>
-                    <button className="btn btn-gold" onClick={() => window.location.href = generateWhatsAppLink("I want to inquire about delivery fees.")}>
-                        Check Delivery Rates
-                    </button>
-                </div>
-
-                <section className="p-support-section">
-                    <div className="support-inner">
-                        <HelpCircle size={40} />
-                        <h2>Confused about a product?</h2>
-                        <p>Our professional therapists can help you choose the right equipment for your specific condition.</p>
-                        <button className="btn btn-primary" onClick={() => window.location.href = generateWhatsAppLink("I need a product consultation.")}>
-                            Speak with a Specialist <ArrowRight size={18} />
-                        </button>
                     </div>
                 </section>
             </div>
