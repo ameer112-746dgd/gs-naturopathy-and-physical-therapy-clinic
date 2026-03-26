@@ -19,7 +19,7 @@ const Products = () => {
     const [sortOrder, setSortOrder] = useState('none'); 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/products')
+        axios.get('https://gs-clinic-backend.onrender.com/api/products')
             .then(res => {
                 setProducts(res.data);
                 setFilteredProducts(res.data);

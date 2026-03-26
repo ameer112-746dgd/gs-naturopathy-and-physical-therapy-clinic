@@ -21,7 +21,7 @@ const Services = () => {
     const navigate = useNavigate(); 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/services')
+        axios.get('https://gs-clinic-backend.onrender.com/api/services')
             .then(res => setServices(res.data))
             .catch(err => console.error(err));
     }, []);
