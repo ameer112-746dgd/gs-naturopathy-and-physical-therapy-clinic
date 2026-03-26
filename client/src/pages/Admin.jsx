@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from '../api'; // Import our central API logic
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { 
     faPlus, faTrash, faEdit, faSave, faTimes, 
@@ -8,9 +8,6 @@ import {
 import './Admin.css';
 
 const Admin = () => {
-    // CENTRALIZED URL TO AVOID ERRORS
-    const BASE_URL = 'https://gs-naturopathy-and-physical-therapy.onrender.com/api/products';
-
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loginPass, setLoginPass] = useState('');
     const [products, setProducts] = useState([]);
@@ -28,7 +25,7 @@ const Admin = () => {
 
     const fetchProducts = async () => {
         try {
-            const res = await axios.get(BASE_URL);
+            const res = await API.get('/products'); // Now correctly hits .../api/products
             setProducts(res.data);
         } catch (err) { console.error("Fetch Error:", err); }
     };
@@ -53,16 +50,19 @@ const Admin = () => {
         try {
             const dataToSend = { ...formData, price: Number(formData.price) };
             if (editingId) {
-                await axios.put(`${BASE_URL}/${editingId}`, dataToSend);
+                await API.put(`/products/${editingId}`, dataToSend);
             } else {
-                await axios.post(BASE_URL, dataToSend);
+                await API.post('/products', dataToSend);
             }
             
             setEditingId(null);
             setFormData({ name: '', description: '', price: '', image: '', category: 'Medications / Health Products', inStock: true });
             fetchProducts();
             alert("Database Updated Successfully!");
-        } catch (err) { alert("Error saving data. Check connection and image size."); }
+        } catch (err) { 
+            console.error("Save Error:", err);
+            alert("Error saving data. Check image size (Try a smaller photo)."); 
+        }
     };
 
     const handleSelect = (id) => {
@@ -72,7 +72,7 @@ const Admin = () => {
     const deleteMultiple = async () => {
         if (window.confirm(`Delete ${selectedIds.length} items?`)) {
             try {
-                await axios.post(`${BASE_URL}/bulk-delete`, { ids: selectedIds });
+                await API.post('/products/bulk-delete', { ids: selectedIds });
                 setSelectedIds([]);
                 fetchProducts();
             } catch (err) { alert("Bulk delete failed."); }
@@ -110,7 +110,7 @@ const Admin = () => {
                 <h3>{editingId ? "Update Product" : "New Product"}</h3>
                 <div className="input-group">
                     <input type="text" placeholder="Name" value={formData.name} required onChange={e => setFormData({...formData, name: e.target.value})} />
-                    <input type="number" placeholder="Price (Numbers Only)" value={formData.price} required onChange={e => setFormData({...formData, price: e.target.value})} />
+                    <input type="number" placeholder="Price" value={formData.price} required onChange={e => setFormData({...formData, price: e.target.value})} />
                 </div>
 
                 <div className="input-group">
@@ -122,7 +122,7 @@ const Admin = () => {
                     </select>
                     <label className="stock-toggle">
                         <input type="checkbox" checked={formData.inStock} onChange={e => setFormData({...formData, inStock: e.target.checked})} />
-                        Available In Stock
+                        In Stock
                     </label>
                 </div>
 
@@ -144,10 +144,10 @@ const Admin = () => {
 
             <div className="inventory-list">
                 <div className="list-header">
-                    <h2>Stock List ({products.length})</h2>
+                    <h2>Stock ({products.length})</h2>
                     {selectedIds.length > 0 && (
                         <button className="bulk-delete-btn" onClick={deleteMultiple}>
-                            <FontAwesomeIcon icon={faTrash} /> Delete Selected ({selectedIds.length})
+                            <FontAwesomeIcon icon={faTrash} /> Delete Selected
                         </button>
                     )}
                 </div>
@@ -158,7 +158,6 @@ const Admin = () => {
                             <th>Select</th>
                             <th>Image</th>
                             <th>Name</th>
-                            <th>Category</th>
                             <th>Price</th>
                             <th>Stock</th>
                             <th>Action</th>
@@ -172,9 +171,8 @@ const Admin = () => {
                                 </td>
                                 <td data-label="Image"><img src={p.image} className="table-img" alt="" /></td>
                                 <td data-label="Name"><strong>{p.name}</strong></td>
-                                <td data-label="Category"><span className="cat-badge">{p.category}</span></td>
                                 <td data-label="Price">₦{Number(p.price).toLocaleString()}</td>
-                                <td data-label="Stock">{p.inStock ? <FontAwesomeIcon icon={faCheckCircle} color="green" /> : <FontAwesomeIcon icon={faTimesCircle} color="red" />}</td>
+                                <td data-label="Stock">{p.inStock ? "✅" : "❌"}</td>
                                 <td data-label="Actions">
                                     <button className="edit-ico-btn" onClick={() => {setEditingId(p._id); setFormData(p); window.scrollTo(0,0);}}>
                                         <FontAwesomeIcon icon={faEdit} />

@@ -5,22 +5,26 @@ require('dotenv').config();
 
 const app = express();
 
-// 1. Connect Database
 connectDB();
 
-// 2. Updated Middleware (Very Important)
-// This tells the server to accept requests from ANYWHERE
+// CORS Policy - Allowing your specific domains
 app.use(cors({
-    origin: '*', 
+    origin: [
+        'https://gs-clinic-frontend.onrender.com', 
+        'https://gsnaturopathyandphysicaltherapyclinic.com',
+        'https://www.gsnaturopathyandphysicaltherapyclinic.com'
+    ],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    allowedHeaders: ['Content-Type', 'Authorization']
+    credentials: true
 }));
 
-// Increase limits for large product images
 app.use(express.json({ limit: '50mb' })); 
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 
-// 3. Routes
+// Health Check Route (to test if backend is awake)
+app.get('/api', (req, res) => res.send("GS Clinic API is running..."));
+
+// Routes
 app.use('/api/services', require('./routes/serviceRoutes'));
 app.use('/api/products', require('./routes/productRoutes'));
 
