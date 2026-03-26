@@ -8,18 +8,20 @@ import {
 import { generateWhatsAppLink } from '../utils/whatsapp';
 import './Products.css';
 
+// CENTRALIZED API URL
+const BASE_URL = 'https://gs-naturopathy-and-physical-therapy.onrender.com/api/products';
+
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    // Filter/Search States
     const [searchTerm, setSearchTerm] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('All');
     const [sortOrder, setSortOrder] = useState('none'); 
 
     useEffect(() => {
-        axios.get('https://gs-naturopathy-and-physical-therapy.onrender.com/api/products')
+        axios.get(BASE_URL)
             .then(res => {
                 setProducts(res.data);
                 setFilteredProducts(res.data);
@@ -31,7 +33,6 @@ const Products = () => {
             });
     }, []);
 
-    // Filter and Sort Logic
     useEffect(() => {
         let result = products.filter(p => 
             p.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
@@ -71,15 +72,10 @@ const Products = () => {
             </header>
 
             <div className="container">
-                {/* Search and Filters Bar */}
                 <div className="products-filter-bar">
                     <div className="search-box">
                         <Search size={18} />
-                        <input 
-                            type="text" 
-                            placeholder="Search name..." 
-                            onChange={(e) => setSearchTerm(e.target.value)} 
-                        />
+                        <input type="text" placeholder="Search name..." onChange={(e) => setSearchTerm(e.target.value)} />
                     </div>
                     <div className="filter-controls">
                         <div className="control-item">
@@ -110,10 +106,7 @@ const Products = () => {
                                 <div className="p-image-area">
                                     {!product.inStock && <div className="stock-badge">Sold Out</div>}
                                     <div className="p-category-tag">{product.category}</div>
-                                    <img 
-                                        src={product.image || 'https://via.placeholder.com/300x200?text=Clinic+Product'} 
-                                        alt={product.name} 
-                                    />
+                                    <img src={product.image || 'https://via.placeholder.com/300x200?text=Clinic+Product'} alt={product.name} />
                                 </div>
                                 <div className="p-details">
                                     <h3>{product.name}</h3>
@@ -142,6 +135,7 @@ const Products = () => {
                     </div>
                 </section>
 
+                {/* Banner sections... (same as before) */}
                 <section className="order-timeline-section">
                     <h2 className="section-title">Ordering Process</h2>
                     <div className="timeline-grid">
