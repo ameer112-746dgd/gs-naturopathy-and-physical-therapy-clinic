@@ -1,0 +1,184 @@
+.main-footer {
+    background-color: #0a1f0a;
+    color: #cbd5e0;
+    padding: 80px 20px 30px;
+    margin-top: 80px;
+    border-top: 4px solid var(--primary-green);
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.footer-logo {
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+}
+
+.footer-desc {
+    line-height: 1.7;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+/* Social Icons */
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255,255,255,0.05);
+    color: white;
+    transition: 0.3s;
+    cursor: pointer;
+    border: none;
+}
+
+.social-icon:hover {
+    transform: translateY(-5px);
+}
+
+.insta:hover { background: #E1306C; }
+.tiktok:hover { background: #000000; }
+.whatsapp:hover { background: #25D366; }
+
+/* Links & Titles */
+.footer-section h4 {
+    color: #fff;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #cbd5e0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: var(--primary-green);
+    transform: translateX(5px);
+}
+
+/* Contact Info */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.footer-icon {
+    color: var(--primary-green);
+}
+
+.inline-whatsapp-icon {
+    margin-left: 10px;
+    color: #25D366;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s;
+}
+
+.inline-whatsapp-icon:hover {
+    transform: scale(1.2);
+}
+
+.business-hours-footer {
+    margin-top: 25px;
+    padding: 10px 15px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+}
+
+/* Bottom Bar */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+}
+
+.developer-credit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dev-whatsapp-icon {
+    background: #25d366;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: transform 0.3s;
+}
+
+.dev-whatsapp-icon:hover {
+    transform: scale(1.2) rotate(15deg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+}
+
+@media (max-width: 768px) {
+    .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-section, .social-links, .footer-links a, .contact-item, .footer-bottom {
+        text-align: center;
+        justify-content: center;
+    }
+    .main-footer { padding: 60px 20px 30px; }
+}
+.admin-secret-link {
+    text-decoration: none;
+    color: green; /* Makes it look like normal text */
+    cursor: default; /* Doesn't show the pointer finger unless you hover specifically */
+    display: inline-block;
+}
+
+.admin-secret-link:hover {
+    color: var(--primary-green); /* Optional: slight glow when you know where to look */
+    cursor: pointer;
+}

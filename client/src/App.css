@@ -1,0 +1,225 @@
+/* --- Global Variables --- */
+:root {
+  --primary-green: #2e7d32;
+  --dark-green: #1b5e20;
+  --light-green: #e8f5e9;
+  --whatsapp-green: #25d366;
+  --text-main: #2d3748;
+  --text-muted: #718096;
+  --white: #ffffff;
+  --bg-light: #f9fafb;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+  --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- Resets --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-main);
+  background-color: var(--white);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Layout Wrapper (Keeps Footer at Bottom) --- */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1; /* Pushes footer down */
+}
+
+/* --- Common Components --- */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: var(--dark-green);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* --- Grid System --- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+/* --- Card Styling --- */
+.card {
+  background: var(--white);
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  border: 1px solid rgba(0,0,0,0.03);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* --- Global Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  border: none;
+}
+
+.btn-primary {
+  background-color: var(--primary-green);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background-color: var(--dark-green);
+  transform: scale(1.02);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--primary-green);
+  color: var(--primary-green);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-green);
+  color: var(--white);
+}
+
+.btn-whatsapp {
+  background-color: var(--whatsapp-green);
+  color: var(--white);
+}
+
+.btn-whatsapp:hover {
+  background-color: #128c7e;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+/* --- Form Global Styles --- */
+.form-group {
+  margin-bottom: 20px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #edf2f7;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: var(--transition);
+}
+
+input:focus, textarea:focus {
+  border-color: var(--primary-green);
+  box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.1);
+}
+
+/* --- Page Hero Headers --- */
+.hero-header {
+  padding: 100px 0;
+  background: linear-gradient(135deg, var(--dark-green), var(--primary-green));
+  color: var(--white);
+  text-align: center;
+}
+
+.hero-header h1 {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+}
+
+/* --- Mobile Responsiveness --- */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .hero-header h1 {
+    font-size: 3rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  .section {
+    padding: 50px 0;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* Stack everything on mobile */
+  }
+
+  .hero-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-header p {
+    font-size: 1rem;
+    padding: 0 20px;
+  }
+
+  .btn {
+    width: 100%; /* Make buttons full width on small screens */
+    padding: 16px;
+  }
+
+  .container {
+    width: 92%;
+  }
+}
+
+/* Very Small Phones */
+@media (max-width: 480px) {
+  .card {
+    padding: 20px;
+  }
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade {
+  animation: fadeIn 0.6s ease-out;
+}

@@ -1,0 +1,236 @@
+/* --- Global Page Setup --- */
+.booking-page {
+    background-color: #f4f7f5;
+    min-height: 100vh;
+    padding-bottom: 100px;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* --- Hero Header Section --- */
+.booking-hero {
+    background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 100%);
+    color: white;
+    padding: 100px 20px 150px 20px;
+    text-align: center;
+}
+
+.booking-hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 15px;
+    letter-spacing: -0.02em;
+}
+
+.booking-hero p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* --- Main Form Card --- */
+.booking-container {
+    background: #ffffff;
+    padding: 50px;
+    border-radius: 28px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08);
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+/* --- Form Grid & Layout --- */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+/* --- Professional Labels (Aligned with Lucide Icons) --- */
+.form-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1a202c;
+    font-size: 0.95rem;
+}
+
+.form-label svg {
+    color: #2e7d32;
+}
+
+/* --- Form Inputs --- */
+.form-input {
+    width: 100%;
+    padding: 15px 18px;
+    border: 2px solid #edf2f7;
+    border-radius: 14px;
+    font-size: 1rem;
+    color: #2d3748;
+    background-color: #f8fafc;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+}
+
+.form-input:focus {
+    border-color: #2e7d32;
+    background-color: #ffffff;
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(46, 125, 50, 0.12);
+}
+
+/* Specific styling for the Time Input */
+input[type="time"].form-input {
+    cursor: pointer;
+    min-height: 54px;
+}
+
+/* --- Visit Type Toggle --- */
+.visit-type-toggle {
+    display: flex;
+    gap: 15px;
+    margin-top: 5px;
+}
+
+.type-btn {
+    flex: 1;
+    padding: 20px;
+    border: 2px solid #edf2f7;
+    border-radius: 16px;
+    background: #f8fafc;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    color: #4a5568;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.type-btn.active {
+    background: #2e7d32;
+    color: white;
+    border-color: #2e7d32;
+    box-shadow: 0 10px 20px rgba(46, 125, 50, 0.25);
+    transform: translateY(-2px);
+}
+
+.type-btn.active svg {
+    color: white;
+}
+
+/* --- Service Selection Grid --- */
+.services-selection-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.service-chip {
+    padding: 15px;
+    border: 2px solid #edf2f7;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    color: #4a5568;
+    background: #ffffff;
+    user-select: none;
+}
+
+.service-chip:hover {
+    border-color: #2e7d32;
+    background: #f0fdf4;
+}
+
+.service-chip.selected {
+    background: #e8f5e9;
+    border-color: #2e7d32;
+    color: #1b5e20;
+    font-weight: 800;
+    transform: scale(1.02);
+}
+
+/* --- Schedule Notice --- */
+.schedule-notice {
+    background-color: #fffbeb; 
+    border: 1px solid #fde68a;
+    padding: 20px;
+    border-radius: 16px;
+    color: #92400e;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.schedule-notice strong {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #78350f;
+    margin-bottom: 6px;
+}
+
+/* --- Address Field Animation --- */
+.animate-fade-in {
+    animation: revealField 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes revealField {
+    from { opacity: 0; transform: translateY(-15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Submit Button --- */
+.booking-submit-btn {
+    background: #25d366; 
+    color: white;
+    border: none;
+    padding: 24px;
+    border-radius: 18px;
+    font-size: 1.3rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 30px rgba(37, 211, 102, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 20px;
+}
+
+.booking-submit-btn:hover {
+    background: #128c7e;
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(18, 140, 126, 0.35);
+}
+
+.booking-submit-btn:active {
+    transform: translateY(-1px);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 850px) {
+    .form-grid { grid-template-columns: 1fr; gap: 20px; }
+    .full-width { grid-column: span 1; }
+    .booking-container { padding: 30px; margin: 0 15px; }
+    .booking-hero h1 { font-size: 2.2rem; }
+    .visit-type-toggle { flex-direction: column; }
+    .services-selection-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 500px) {
+    .booking-hero { padding: 60px 20px 100px 20px; }
+    .booking-submit-btn { font-size: 1.1rem; padding: 20px; }
+}

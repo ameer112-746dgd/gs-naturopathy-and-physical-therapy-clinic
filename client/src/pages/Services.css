@@ -1,0 +1,149 @@
+/* --- Services Page Restyling --- */
+
+.services-page { background: #fcfdfc; }
+
+/* --- Hero --- */
+.services-hero {
+    position: relative;
+    padding: 120px 20px;
+    background: url('https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1500&q=80') center/cover;
+    color: white;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 30, 0, 0.85), rgba(0, 50, 0, 0.7));
+}
+
+.hero-content-alt { position: relative; z-index: 2; }
+.hero-content-alt h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 15px; }
+.hero-content-alt h1 span { color: #4ade80; }
+
+.badge-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 15px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* --- Service Grid --- */
+.services-modern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 80px 0;
+}
+
+.modern-service-card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid #f1f5f9;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 0.4s ease;
+}
+
+.modern-service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.s-icon-box {
+    width: 60px; height: 60px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 16px; margin-bottom: 25px;
+}
+
+.modern-service-card h3 { font-size: 1.4rem; margin-bottom: 15px; color: #1e293b; }
+.modern-service-card p { font-size: 0.95rem; color: #64748b; line-height: 1.6; }
+
+.s-card-actions {
+    display: flex; gap: 12px; margin-top: 30px;
+}
+
+.btn-primary-sm { flex: 1.5; background: #2e7d32; color: white; padding: 12px; border-radius: 10px; font-weight: 700; border: none; cursor: pointer; }
+.btn-outline-sm { flex: 1; border: 2px solid #e2e8f0; background: transparent; padding: 12px; border-radius: 10px; font-weight: 700; color: #475569; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; transition: 0.3s; }
+.btn-outline-sm:hover { background: #f8fafc; border-color: #cbd5e1; }
+
+/* --- Modal Styling --- */
+.service-modal-overlay {
+    position: fixed; inset: 0; background: rgba(0, 30, 0, 0.7);
+    backdrop-filter: blur(5px); z-index: 2000;
+    display: flex; align-items: center; justify-content: center; padding: 20px;
+}
+
+.service-modal {
+    background: white; width: 100%; max-width: 550px;
+    border-radius: 28px; padding: 45px; position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+.close-modal {
+    position: absolute; top: 25px; right: 25px;
+    font-size: 2rem; background: none; border: none; cursor: pointer; color: #94a3b8;
+}
+
+.modal-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; }
+.modal-icon { color: #2e7d32; }
+
+.modal-body h4 { margin-bottom: 10px; color: #1e293b; }
+.modal-body p { color: #475569; line-height: 1.7; margin-bottom: 25px; }
+
+.modal-benefits { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 30px; }
+.benefit-tag {
+    background: #f0fdf4; color: #166534; padding: 6px 14px; border-radius: 50px;
+    font-size: 0.85rem; font-weight: 700; display: flex; align-items: center; gap: 6px;
+}
+
+.modal-info-strip {
+    background: #f8fafc; padding: 15px 20px; border-radius: 12px;
+    display: flex; align-items: center; gap: 12px; color: #475569; font-size: 0.9rem; margin-bottom: 30px;
+}
+
+/* --- Features --- */
+.feature-card { text-align: center; padding: 30px; }
+.feature-card h4 { margin: 15px 0 10px; color: #1e293b; }
+
+/* --- Home Service Banner --- */
+.home-service-banner-alt {
+    background: #1b5e20; color: white; padding: 50px; border-radius: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin: 60px 0; flex-wrap: wrap; gap: 30px;
+}
+.hs-left { display: flex; align-items: center; gap: 25px; }
+.btn-white { background: white; color: #1b5e20; padding: 15px 30px; border-radius: 12px; font-weight: 700; border: none; cursor: pointer; text-decoration: none; }
+
+/* --- FAQ & Final CTA --- */
+.faq-modern { padding: 60px 0; }
+.faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px; }
+.faq-box { background: white; border: 1px solid #f1f5f9; padding: 30px; border-radius: 15px; }
+
+.final-cta-section { text-align: center; padding: 80px 0; background: #f0fdf4; border-radius: 30px; margin-bottom: 80px; }
+.final-cta-section h3 { margin: 15px 0 10px; }
+.final-cta-section p { max-width: 500px; margin: 0 auto 30px; color: #475569; }
+
+/* --- Animations --- */
+.animate-pop { animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+@keyframes popIn { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+    .hero-content-alt h1 { font-size: 2.2rem; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .home-service-banner-alt { flex-direction: column; text-align: center; }
+    .hs-left { flex-direction: column; }
+    .s-card-actions { flex-direction: column; }
+}

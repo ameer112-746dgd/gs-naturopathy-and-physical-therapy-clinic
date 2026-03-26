@@ -1,0 +1,154 @@
+/* About.css */
+.about-page {
+    background-color: #ffffff;
+}
+
+/* Header Section */
+.about-hero {
+    background: linear-gradient(rgba(27, 94, 32, 0.85), rgba(46, 125, 50, 0.85)), 
+                url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1500&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 20px;
+    text-align: center;
+}
+
+.about-hero h1 { font-size: 3.5rem; margin-bottom: 15px; font-weight: 800; }
+.about-hero p { font-size: 1.2rem; max-width: 800px; margin: 0 auto; opacity: 0.9; }
+
+/* Main Content Section */
+.about-intro {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.about-intro-text { flex: 1; min-width: 300px; }
+.about-intro-text h2 { color: var(--dark-green); margin-bottom: 20px; font-size: 2.2rem; }
+.about-intro-text p { line-height: 1.8; color: #444; margin-bottom: 15px; }
+
+.about-image-wrapper { 
+    flex: 1; 
+    min-width: 300px; 
+}
+
+.about-image-wrapper img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+/* Conditions Grid */
+.conditions-section {
+    background-color: #f4fbf4;
+    padding: 60px 30px;
+    border-radius: 30px;
+    margin: 40px 0;
+}
+
+.conditions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.condition-item {
+    background: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #333;
+    transition: 0.3s;
+    border: 1px solid #eef2ee;
+}
+
+.condition-item:hover { transform: translateX(5px); background: var(--primary-green); color: white; }
+.condition-item:hover svg { color: white !important; }
+
+/* Mission & Vision */
+.mv-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.mv-box {
+    padding: 40px;
+    border-radius: 20px;
+    background: #f9f9f9;
+    border-top: 4px solid var(--primary-green);
+}
+
+.mv-box h3 { color: var(--primary-green); margin-bottom: 15px; font-size: 1.5rem; }
+
+/* Why Choose Us Icons */
+.icon-wrapper {
+    color: var(--primary-green);
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.about-card {
+    border-bottom: 4px solid var(--primary-green);
+}
+
+/* Trust Banner */
+.trust-banner {
+    background: var(--dark-green);
+    color: white;
+    padding: 80px 40px;
+    border-radius: 25px;
+    text-align: center;
+    margin: 60px 0;
+}
+
+.trust-banner h2 { font-size: 2.5rem; margin-bottom: 15px; }
+.trust-banner p { margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9; }
+
+.btn-white {
+    background: white;
+    color: var(--dark-green);
+}
+
+/* Contact Details */
+.contact-details-grid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.contact-details-grid p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+
+@media (max-width: 992px) {
+    .about-intro { gap: 30px; }
+    .about-hero h1 { font-size: 2.8rem; }
+}
+
+@media (max-width: 768px) {
+    .mv-container { grid-template-columns: 1fr; }
+    .about-hero { padding: 80px 20px; }
+    .about-hero h1 { font-size: 2.2rem; }
+    .trust-banner h2 { font-size: 1.8rem; }
+    .trust-banner { padding: 50px 20px; }
+    .conditions-section { padding: 40px 20px; }
+}
+
+@media (max-width: 480px) {
+    .about-intro-text h2 { font-size: 1.6rem; }
+    .contact-details-grid { flex-direction: column; align-items: center; gap: 15px; }
+}

@@ -1,0 +1,294 @@
+/* --- Modern Home Styling --- */
+
+:root {
+    --forest: #1b5e20;
+    --mint: #2e7d32;
+    --soft-mint: #e8f5e9;
+    --accent: #e67e22;
+    --glass: rgba(255, 255, 255, 0.9);
+}
+
+.home-page { background: #fcfdfc; }
+
+/* --- Hero --- */
+.hero {
+    position: relative;
+    height: 85vh;
+    min-height: 600px;
+    background: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1500&q=80') center/cover;
+    display: flex;
+    align-items: center;
+    color: white;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0, 30, 0, 0.9) 0%, rgba(0, 50, 0, 0.4) 100%);
+}
+
+.hero-container { position: relative; z-index: 2; }
+
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    margin-bottom: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero h1 { font-size: 4.2rem; font-weight: 800; line-height: 1.1; margin-bottom: 20px; }
+.hero h1 span { color: #4ade80; }
+.hero p { font-size: 1.25rem; max-width: 600px; margin-bottom: 32px; opacity: 0.9; }
+
+.hero-btns { display: flex; gap: 16px; }
+
+/* --- Floating Contact Bar --- */
+.contact-bar-floating {
+    margin-top: -50px;
+    position: relative;
+    z-index: 10;
+}
+
+.contact-bar-flex {
+    background: rgba(247, 244, 244, 0); /* transparent glass */
+    backdrop-filter: blur(15px); /* main glass effect */
+    -webkit-backdrop-filter: blur(15px); /* for Safari */
+
+    padding: 25px;
+    border-radius: 20px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    border: 1px solid rgba(255, 255, 255, 0.3); /* subtle glass edge */
+
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),  /* soft shadow */
+        inset 0 0 10px rgba(255, 255, 255, 0.2); /* inner glow */
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 20px;
+    border-right: 1px solid #eee;
+    background: none; border: none; text-align: left; cursor: pointer;
+}
+
+.contact-item:last-child { border: none; }
+.icon-circle-sm { 
+    background: var(--soft-mint); 
+    color: var(--mint); 
+    padding: 12px; 
+    border-radius: 50%; 
+}
+
+.contact-info .label { display: block; font-size: 0.75rem; color: #888; text-transform: uppercase; }
+.contact-info .val { font-weight: 700; color: #333; }
+
+/* --- About Stack --- */
+.about-preview { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 80px; 
+    align-items: center; 
+}
+
+/* Image container */
+.about-image-stack { 
+    position: relative; 
+}
+
+/* Glass image */
+.about-image-stack .main-img { 
+    width: 100%; 
+    border-radius: 30px;
+
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.1),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Glass badge */
+.experience-badge {
+    position: absolute;
+    bottom: -20px; 
+    right: -20px;
+
+    background: rgba(0, 128, 0, 0.655); /* green glass */
+    color: white;
+
+    padding: 20px 30px;
+    border-radius: 20px;
+    text-align: center;
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    box-shadow: 
+        0 8px 25px rgba(0, 0, 0, 0.15),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.sub-heading { color: var(--mint); text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem; margin-bottom: 10px; }
+.section-title-left { font-size: 2.8rem; font-weight: 800; color: #111; margin-bottom: 20px; }
+.lead { font-size: 1.2rem; color: #555; margin-bottom: 15px; }
+
+/* --- Modern Services --- */
+.title-divider { width: 60px; height: 4px; background: var(--mint); margin: 15px auto 40px; border-radius: 2px; }
+
+.services-modern-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.modern-service-card {
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    border: 1px solid #f0f0f0;
+    transition: 0.4s;
+}
+
+.modern-service-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+    border-color: var(--soft-mint);
+}
+
+.service-icon-box { 
+    width: 60px; height: 60px; 
+    background: var(--soft-mint); 
+    color: var(--mint); 
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 16px; margin-bottom: 20px;
+}
+
+.card-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 15px; }
+.card-footer-link { display: flex; align-items: center; gap: 8px; margin-top: 25px; color: var(--mint); font-weight: 700; text-decoration: none; }
+
+/* --- Visual Timeline --- */
+.visual-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 50px;
+}
+
+.visual-step-card {
+    text-align: center;
+    position: relative;
+    padding: 30px;
+}
+
+.step-icon-wrap {
+    width: 80px; height: 80px;
+    background: white;
+    border: 2px solid var(--soft-mint);
+    color: var(--mint);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    position: relative; z-index: 2;
+}
+
+.step-count {
+    position: absolute;
+    top: 10px; left: 50%;
+    transform: translateX(-50%);
+    font-size: 5rem;
+    font-weight: 900;
+    color: #f0f0f0;
+    z-index: 1;
+}
+
+/* --- WhatsApp Banner --- */
+.whatsapp-banner {
+    background: linear-gradient(135deg, var(--forest), var(--mint));
+    padding: 100px 0;
+    margin: 80px 0;
+    color: white;
+}
+
+.banner-inner { display: flex; justify-content: space-between; align-items: center; }
+.banner-text h2 { font-size: 2.5rem; margin-bottom: 10px; }
+
+.btn-light-glow {
+    background: white;
+    color: var(--mint);
+    padding: 18px 40px;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Benefits Strip --- */
+.benefits-strip {
+    display: flex;
+    justify-content: space-between;
+    background: #f8faf8;
+    padding: 30px;
+    border-radius: 100px;
+}
+
+.benefit-pill { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--forest); }
+
+/* --- Modern Home Service Card --- */
+.home-service-card-modern {
+    background: #111;
+    color: white;
+    padding: 50px;
+    border-radius: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 80px;
+}
+
+.hs-content { display: flex; gap: 30px; align-items: center; }
+.hs-icon-bg { background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 20px; }
+.btn-accent { background: var(--accent); color: white; padding: 15px 30px; border-radius: 12px; }
+
+/* --- Mobile --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.8rem; }
+    .contact-bar-flex { grid-template-columns: 1fr; gap: 20px; }
+    .contact-item { border-right: none; border-bottom: 1px solid #eee; padding: 10px 0; }
+    .about-preview { grid-template-columns: 1fr; }
+    .visual-steps { grid-template-columns: 1fr; }
+    .banner-inner { flex-direction: column; text-align: center; gap: 30px; }
+    .home-service-card-modern { flex-direction: column; text-align: center; gap: 30px; }
+    .hs-content { flex-direction: column; }
+    .benefits-strip { flex-direction: column; border-radius: 20px; gap: 15px; }
+}
+.btn-accent {
+    background: var(--accent);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 12px;
+    text-decoration: none; /* Important because it's now a Link tag */
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.btn-accent:hover {
+    background: #d35400; /* Darker orange */
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(230, 126, 34, 0.3);
+}

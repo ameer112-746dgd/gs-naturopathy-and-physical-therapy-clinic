@@ -1,0 +1,45 @@
+# Dependency directories
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build directories
+client/dist/
+client/build/
+
+# Environment variables (Crucial for security!)
+.env
+server/.env
+client/.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+*.log
+
+# OS-specific files
+.DS_Store
+.DS_Store?
+._*
+Thumbe.db
+desktop.ini
+
+# IDE/Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Vite cache
+client/.vite/
+
+# Database local data (if any)
+dump/
